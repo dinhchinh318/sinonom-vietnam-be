@@ -1,3 +1,20 @@
+# services:
+#   backend:
+#     build: .
+#     container_name: my-backend
+#     ports:
+#       - "8000:8000"
+#     env_file:
+#       - .env
+#     volumes:
+#       # Mount 1 thư mục để cache model (ví dụ huggingface cache)
+#       - hf_cache:/root/.cache/huggingface
+#       # (tuỳ bạn) mount thư mục data nếu cần
+#       # - ./data:/app/data
+#     restart: unless-stopped
+
+# volumes:
+#   hf_cache:
 services:
   backend:
     build: .
@@ -7,10 +24,13 @@ services:
     env_file:
       - .env
     volumes:
-      # Mount 1 thư mục để cache model (ví dụ huggingface cache)
+      # Cache HuggingFace để khỏi tải lại
       - hf_cache:/root/.cache/huggingface
-      # (tuỳ bạn) mount thư mục data nếu cần
-      # - ./data:/app/data
+
+      # Nếu bạn có model local trên server, mount vào /app/models
+      # (trên server bạn sẽ tạo thư mục /opt/myapp/models)
+      - /opt/myapp/models:/app/models:ro
+
     restart: unless-stopped
 
 volumes:
