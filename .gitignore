@@ -7,5 +7,12 @@ model/
 *.pt
 
 # venv
+
+
 .venv/
 __pycache__/
+*.pyc
+.env
+*.sqlite3
+models/
+hf_cache/

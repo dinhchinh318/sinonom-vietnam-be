@@ -1,0 +1,17 @@
+services:
+  backend:
+    build: .
+    container_name: my-backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      # Mount 1 thư mục để cache model (ví dụ huggingface cache)
+      - hf_cache:/root/.cache/huggingface
+      # (tuỳ bạn) mount thư mục data nếu cần
+      # - ./data:/app/data
+    restart: unless-stopped
+
+volumes:
+  hf_cache:

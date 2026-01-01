@@ -1,0 +1,13 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.git
+.gitignore
+model/        # nếu model đang nằm local, KHÔNG copy vào image
+datasets/
+outputs/
+logs/
