@@ -1,0 +1,11 @@
+.env
+.env.example
+# model weights
+model/
+*.bin
+*.safetensors
+*.pt
+
+# venv
+.venv/
+__pycache__/
